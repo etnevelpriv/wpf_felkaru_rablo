@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Imaging;
 
 namespace wpf_felkaru_rablo
 {
@@ -25,8 +26,14 @@ namespace wpf_felkaru_rablo
 
         private void spinButton_Click(object sender, RoutedEventArgs e)
         {
+            if (balance < bet)
+            {
+                balanceTextBox.Text = "Nincs elég pénz a téthez!";
+                return;
+            }
             balance -= bet;
             balanceTextBox.Text = $"{balance}";
+            image1.Source = new BitmapImage(new Uri($"assets/cherry.png", UriKind.Relative));
         }
     }
 }

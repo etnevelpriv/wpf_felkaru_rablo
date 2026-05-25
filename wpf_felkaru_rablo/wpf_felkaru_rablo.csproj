@@ -9,7 +9,28 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="assets\" />
+    <None Remove="assets\bell.png" />
+    <None Remove="assets\cherry.png" />
+    <None Remove="assets\grape.png" />
+    <None Remove="assets\lemon.png" />
+    <None Remove="assets\orange.png" />
+    <None Remove="assets\seven.png" />
+    <None Remove="assets\star.png" />
+    <None Remove="assets\watermelon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\grape.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\bell.png" />
+    <Resource Include="assets\cherry.png" />
+    <Resource Include="assets\lemon.png" />
+    <Resource Include="assets\orange.png" />
+    <Resource Include="assets\seven.png" />
+    <Resource Include="assets\star.png" />
+    <Resource Include="assets\watermelon.png" />
   </ItemGroup>
 
 </Project>
