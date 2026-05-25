@@ -10,7 +10,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
 using System.Windows.Threading;
-using System.Diagnostics.SymbolStore;
 
 namespace wpf_felkaru_rablo
 {
@@ -25,7 +24,7 @@ namespace wpf_felkaru_rablo
         private Random random = new Random();
         private bool win = false;
         private int spinTicks = 0;
-        private int symbolCount = 10;
+        private int symbolCount = 4;
         private string[] reel1;
         private string[] reel2;
         private string[] reel3;
@@ -98,7 +97,7 @@ namespace wpf_felkaru_rablo
             if (spinTicks >= 20)
             {
                 timer.Stop();
-                lasnTick();
+                lastTick(reel1[reel1Position], reel2[reel2Position], reel3[reel3Position]);
             }
         }
 
@@ -114,11 +113,8 @@ namespace wpf_felkaru_rablo
             spinTicks = 0;
             timer.Start();
         }
-        private void lasnTick ()
+        private void lastTick (string index1, string index2, string index3)
         {
-            int index1 = random.Next(symbols.Length);
-            int index2 = random.Next(symbols.Length);
-            int index3 = random.Next(symbols.Length);
             if (index1 == index2 && index2 == index3)
             {
                 win = true;
@@ -136,9 +132,7 @@ namespace wpf_felkaru_rablo
                 win = false;
                 resultsTextBox.Text = "Vesztettél!";
             }
-            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
-            image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
-            image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
+
             balanceTextBox.Text = $"{balance}";
             spinButton.IsEnabled = true;
         }
