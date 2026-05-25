@@ -107,9 +107,10 @@ namespace wpf_felkaru_rablo
 
         private void spinButton_Click(object sender, RoutedEventArgs e)
         {
+            alertTextBox.Text = "";
             if (balance < bet)
             {
-                balanceTextBox.Text = "Nincs elég pénz a téthez!";
+                alertTextBox.Text = "Nincs elég pénz a téthez!";
                 return;
             }
             spinButton.IsEnabled = false;
@@ -122,7 +123,7 @@ namespace wpf_felkaru_rablo
             if (index1 == index2 && index2 == index3)
             {
                 win = true;
-                balance += bet * 10;
+                balance += bet * 5;
                 resultsTextBox.Text = "Nyertél!";
             }
             else if (index1 == index2 || index2 == index3 || index1 == index3)
@@ -137,8 +138,18 @@ namespace wpf_felkaru_rablo
                 resultsTextBox.Text = "Vesztettél!";
             }
 
-            balanceTextBox.Text = $"{balance}";
+            balanceTextBox.Text = $"Egyenleg: {balance}";
             spinButton.IsEnabled = true;
+        }
+
+        private void symbolcountTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void betTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
