@@ -22,6 +22,7 @@ namespace wpf_felkaru_rablo
         private int bet = 10;
         private string[] symbols = { "cherry", "lemon", "orange", "bell", "grape", "seven", "star", "watermelon" };
         private Random random = new Random();
+        private bool win = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,13 +36,18 @@ namespace wpf_felkaru_rablo
                 return;
             }
             balance -= bet;
-            balanceTextBox.Text = $"{balance}";
             int index1 = random.Next(symbols.Length);
             int index2 = random.Next(symbols.Length);
             int index3 = random.Next(symbols.Length);
+            if (index1 == index2 && index2 == index3)
+            {
+                win = true;
+                balance += bet * 10;
+            }
             image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
             image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
             image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
+            balanceTextBox.Text = $"{balance}";
         }
     }
 }
