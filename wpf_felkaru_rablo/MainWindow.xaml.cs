@@ -44,7 +44,13 @@ namespace wpf_felkaru_rablo
                 win = true;
                 balance += bet * 10;
                 resultsTextBox.Text = "Nyertél!";
-            } else
+            } else if (index1 == index2 || index2 == index3 || index1 == index3)
+            {
+                win = true;
+                balance += bet * 2;
+                resultsTextBox.Text = "Részleges nyeremény!";
+            }
+            else
             {
                 win = false;
                 resultsTextBox.Text = "Vesztettél!";
