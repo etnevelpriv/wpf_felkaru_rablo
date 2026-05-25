@@ -36,8 +36,12 @@ namespace wpf_felkaru_rablo
             }
             balance -= bet;
             balanceTextBox.Text = $"{balance}";
-            int index = random.Next(symbols.Length);
-            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index]}.png", UriKind.Relative));
+            int index1 = random.Next(symbols.Length);
+            int index2 = random.Next(symbols.Length);
+            int index3 = random.Next(symbols.Length);
+            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
+            image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
+            image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
         }
     }
 }
