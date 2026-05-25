@@ -45,6 +45,7 @@ namespace wpf_felkaru_rablo
             if (spinTicks >= 20)
             {
                 timer.Stop();
+                lasnTick();
             }
         }
 
@@ -58,6 +59,9 @@ namespace wpf_felkaru_rablo
             balance -= bet;
             spinTicks = 0;
             timer.Start();
+        }
+        private void lasnTick ()
+        {
             int index1 = random.Next(symbols.Length);
             int index2 = random.Next(symbols.Length);
             int index3 = random.Next(symbols.Length);
@@ -66,7 +70,8 @@ namespace wpf_felkaru_rablo
                 win = true;
                 balance += bet * 10;
                 resultsTextBox.Text = "Nyertél!";
-            } else if (index1 == index2 || index2 == index3 || index1 == index3)
+            }
+            else if (index1 == index2 || index2 == index3 || index1 == index3)
             {
                 win = true;
                 balance += bet * 2;
@@ -77,10 +82,11 @@ namespace wpf_felkaru_rablo
                 win = false;
                 resultsTextBox.Text = "Vesztettél!";
             }
-                image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
             image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
             image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
             balanceTextBox.Text = $"{balance}";
+
         }
     }
 }
