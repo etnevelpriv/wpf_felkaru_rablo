@@ -33,6 +33,10 @@ namespace wpf_felkaru_rablo
         private int reel2Position = 0;
         private int reel3Position = 0;
 
+        private int reel1Stop = 10;
+        private int reel2Stop = 15;
+        private int reel3Stop = 20;
+
         private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
@@ -59,9 +63,9 @@ namespace wpf_felkaru_rablo
         private void Timer_Tick(object sender, EventArgs e)
         {
             spinTicks++;
-            reel1Position++;
-            reel2Position++;
-            reel3Position++;
+            if (spinTicks <= reel1Stop) reel1Position++;
+            if (spinTicks <= reel2Stop) reel2Position++;
+            if (spinTicks <= reel3Stop) reel3Position++;
             if (reel1Position >= symbolCount) reel1Position = 0;
             if (reel2Position >= symbolCount) reel2Position = 0;
             if (reel3Position >= symbolCount) reel3Position = 0;
