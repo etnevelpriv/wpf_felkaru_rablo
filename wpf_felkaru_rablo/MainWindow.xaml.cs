@@ -16,6 +16,8 @@ namespace wpf_felkaru_rablo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int balance = 100;
+        private int bet = 10;
         public MainWindow()
         {
             InitializeComponent();
@@ -23,7 +25,8 @@ namespace wpf_felkaru_rablo
 
         private void spinButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("A gomb meg lett nyomva!");
+            balance -= bet;
+            balanceTextBox.Text = $"{balance}";
         }
     }
 }

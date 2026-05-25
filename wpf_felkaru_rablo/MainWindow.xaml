@@ -9,6 +9,7 @@
     <Grid Margin="20">
         <StackPanel>
             <TextBlock TextWrapping="Wrap" FontSize="32" HorizontalAlignment="Center" Text="Félkarú rabló"/>
+            <TextBlock x:Name="balanceTextBox" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Text=""/>
             <Button x:Name="spinButton" Content="Pörgetés" Height="45" Width="130" Margin="0,30,0,0" Click="spinButton_Click"/>
         </StackPanel>
     </Grid>
