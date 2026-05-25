@@ -24,6 +24,7 @@ namespace wpf_felkaru_rablo
         private Random random = new Random();
         private bool win = false;
         private int spinTicks = 0;
+        private int symbolCount = 4;
         private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
@@ -42,6 +43,15 @@ namespace wpf_felkaru_rablo
             image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
             image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
             image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
+
+            image1Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+            image1Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+
+            image2Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+            image2Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+
+            image3Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+            image3Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
             if (spinTicks >= 20)
             {
                 timer.Stop();
@@ -56,6 +66,7 @@ namespace wpf_felkaru_rablo
                 balanceTextBox.Text = "Nincs elég pénz a téthez!";
                 return;
             }
+            spinButton.IsEnabled = false;
             balance -= bet;
             spinTicks = 0;
             timer.Start();
@@ -86,7 +97,7 @@ namespace wpf_felkaru_rablo
             image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
             image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
             balanceTextBox.Text = $"{balance}";
-
+            spinButton.IsEnabled = true;
         }
     }
 }

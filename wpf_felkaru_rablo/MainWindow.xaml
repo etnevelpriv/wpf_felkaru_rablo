@@ -12,9 +12,21 @@
             <TextBlock x:Name="balanceTextBox" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Text=""/>
             <Button x:Name="spinButton" Content="Pörgetés" Height="45" Width="130" Margin="0,30,0,0" Click="spinButton_Click"/>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Image x:Name="image1" Height="100" Width="100" Margin="0, 20, 0, 20"/>
-                <Image x:Name="image2" Height="100" Width="100" Margin="0, 20, 0, 20"/>
-                <Image x:Name="image3" Height="100" Width="100" Margin="0, 20, 0, 20"/>
+                <StackPanel Margin="10">
+                    <Image x:Name="image1Top" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image1" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image1Bottom" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <Image x:Name="image2Top" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image2" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image2Bottom" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <Image x:Name="image3Top" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image3" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                    <Image x:Name="image3Bottom" Height="50" Width="50" Margin="0, 20, 0, 20"/>
+                </StackPanel>   
             </StackPanel>
             <TextBlock x:Name="resultsTextBox" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Text=""/>
 
