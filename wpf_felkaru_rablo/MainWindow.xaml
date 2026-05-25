@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:wpf_felkaru_rablo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock TextWrapping="Wrap" FontSize="32" HorizontalAlignment="Center" Text="Félkarú rabló"/>
+            <Button Content="Pörgetés" Height="45" Width="130" Margin="0,30,0,0"/>
+        </StackPanel>
     </Grid>
 </Window>
