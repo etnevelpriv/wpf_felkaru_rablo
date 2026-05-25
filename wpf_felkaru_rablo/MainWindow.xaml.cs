@@ -20,5 +20,10 @@ namespace wpf_felkaru_rablo
         {
             InitializeComponent();
         }
+
+        private void spinButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("A gomb meg lett nyomva!");
+        }
     }
 }
