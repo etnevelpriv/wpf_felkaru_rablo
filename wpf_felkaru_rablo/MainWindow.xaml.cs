@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
 using System.Windows.Threading;
+using System.Diagnostics.SymbolStore;
 
 namespace wpf_felkaru_rablo
 {
@@ -24,34 +25,68 @@ namespace wpf_felkaru_rablo
         private Random random = new Random();
         private bool win = false;
         private int spinTicks = 0;
-        private int symbolCount = 4;
+        private int symbolCount = 10;
+        private string[] reel;
+        private int reel1Position = 0;
+        private int reel2Position = 0;
+        private int reel3Position = 0;
+
         private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
             timer.Tick += Timer_Tick;
+            BuildReel();
+        }
+        private void BuildReel()
+        {
+            reel = new string[symbolCount];
+            for (int i = 0; i < symbolCount; i++)
+            {
+                reel[i] = symbols[random.Next(symbols.Length)];
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             spinTicks++;
-            int index1 = random.Next(symbols.Length);
-            int index2 = random.Next(symbols.Length);
-            int index3 = random.Next(symbols.Length);
+            reel1Position++;
+            reel2Position++;
+            reel3Position++;
+            if (reel1Position >= symbolCount) reel1Position = 0;
+            if (reel2Position >= symbolCount) reel2Position = 0;
+            if (reel3Position >= symbolCount) reel3Position = 0;
 
-            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
-            image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
-            image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
+            int reel1TopIndex = reel1Position + 1;
+            int reel1BottomIndex = reel1Position - 1;
+            int reel2TopIndex = reel2Position + 1;
+            int reel2BottomIndex = reel2Position - 1;
+            int reel3TopIndex = reel3Position + 1;
+            int reel3BottomIndex = reel3Position - 1;
 
-            image1Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
-            image1Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri($"assets/{reel[reel1Position]}.png", UriKind.Relative));
+            image2.Source = new BitmapImage(new Uri($"assets/{reel[reel2Position]}.png", UriKind.Relative));
+            image3.Source = new BitmapImage(new Uri($"assets/{reel[reel3Position]}.png", UriKind.Relative));
 
-            image2Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
-            image2Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+            if (reel1BottomIndex < 0) reel1BottomIndex = symbolCount - 1;
+            if (reel1TopIndex >= symbolCount) reel1TopIndex = 0;
+            if (reel2BottomIndex < 0) reel2BottomIndex = symbolCount - 1;
+            if (reel2TopIndex >= symbolCount) reel2TopIndex = 0;
+            if (reel3BottomIndex < 0) reel3BottomIndex = symbolCount - 1;
+            if (reel3TopIndex >= symbolCount) reel3TopIndex = 0;
 
-            image3Top.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
-            image3Bottom.Source = new BitmapImage(new Uri($"assets/{symbols[random.Next(symbols.Length)]}.png", UriKind.Relative));
+
+            image1Top.Source = new BitmapImage(new Uri($"assets/{reel[reel1TopIndex]}.png", UriKind.Relative));
+            image1Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel1BottomIndex]}.png", UriKind.Relative));
+
+            image2Top.Source = new BitmapImage(new Uri($"assets/{reel[reel2TopIndex]}.png", UriKind.Relative));
+            image2Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel2BottomIndex]}.png", UriKind.Relative));
+
+            image3Top.Source = new BitmapImage(new Uri($"assets/{reel[reel3TopIndex]}.png", UriKind.Relative));
+            image3Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel3BottomIndex]}.png", UriKind.Relative));
+
+
             if (spinTicks >= 20)
             {
                 timer.Stop();
