@@ -144,12 +144,46 @@ namespace wpf_felkaru_rablo
 
         private void symbolcountTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!int.TryParse(symbolcountTextBox.Text, out int parsedCount))
+            {
+                return;
+            }
 
+            if (parsedCount < 1)
+            {
+                parsedCount = 1;
+            }
+            else if (parsedCount > symbols.Length)
+            {
+                parsedCount = symbols.Length;
+            }
+
+            if (symbolcountTextBox.Text != parsedCount.ToString())
+            {
+                symbolcountTextBox.Text = parsedCount.ToString();
+                symbolcountTextBox.SelectionStart = symbolcountTextBox.Text.Length;
+            }
+
+            symbolCount = parsedCount;
+
+            BuildReel();
         }
 
         private void betTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!int.TryParse(betTextBox.Text, out bet))
+            {
+                return;
+            }
+            if (bet < 1)
+            {
+                bet = 1;
+            }
+            else if (bet > balance)
+            {
+                bet = balance;
+            }
+            betTextBox.Text = bet.ToString();
         }
     }
 }
