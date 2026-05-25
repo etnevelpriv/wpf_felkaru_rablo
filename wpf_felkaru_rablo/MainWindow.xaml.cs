@@ -43,8 +43,13 @@ namespace wpf_felkaru_rablo
             {
                 win = true;
                 balance += bet * 10;
+                resultsTextBox.Text = "Nyertél!";
+            } else
+            {
+                win = false;
+                resultsTextBox.Text = "Vesztettél!";
             }
-            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
+                image1.Source = new BitmapImage(new Uri($"assets/{symbols[index1]}.png", UriKind.Relative));
             image2.Source = new BitmapImage(new Uri($"assets/{symbols[index2]}.png", UriKind.Relative));
             image3.Source = new BitmapImage(new Uri($"assets/{symbols[index3]}.png", UriKind.Relative));
             balanceTextBox.Text = $"{balance}";

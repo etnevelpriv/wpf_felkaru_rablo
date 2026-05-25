@@ -16,6 +16,7 @@
                 <Image x:Name="image2" Height="100" Width="100" Margin="0, 20, 0, 20"/>
                 <Image x:Name="image3" Height="100" Width="100" Margin="0, 20, 0, 20"/>
             </StackPanel>
+            <TextBlock x:Name="resultsTextBox" TextWrapping="Wrap" FontSize="24" HorizontalAlignment="Center" Text=""/>
 
         </StackPanel>
     </Grid>
