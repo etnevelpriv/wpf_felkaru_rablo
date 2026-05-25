@@ -26,7 +26,10 @@ namespace wpf_felkaru_rablo
         private bool win = false;
         private int spinTicks = 0;
         private int symbolCount = 10;
-        private string[] reel;
+        private string[] reel1;
+        private string[] reel2;
+        private string[] reel3;
+
         private int reel1Position = 0;
         private int reel2Position = 0;
         private int reel3Position = 0;
@@ -41,10 +44,16 @@ namespace wpf_felkaru_rablo
         }
         private void BuildReel()
         {
-            reel = new string[symbolCount];
+            reel1 = new string[symbolCount];
+            reel2 = new string[symbolCount];
+            reel3 = new string[symbolCount];
+
             for (int i = 0; i < symbolCount; i++)
             {
-                reel[i] = symbols[random.Next(symbols.Length)];
+                reel1[i] = symbols[random.Next(symbols.Length)];
+                reel2[i] = symbols[random.Next(symbols.Length)];
+                reel3[i] = symbols[random.Next(symbols.Length)];
+
             }
         }
 
@@ -65,9 +74,9 @@ namespace wpf_felkaru_rablo
             int reel3TopIndex = reel3Position + 1;
             int reel3BottomIndex = reel3Position - 1;
 
-            image1.Source = new BitmapImage(new Uri($"assets/{reel[reel1Position]}.png", UriKind.Relative));
-            image2.Source = new BitmapImage(new Uri($"assets/{reel[reel2Position]}.png", UriKind.Relative));
-            image3.Source = new BitmapImage(new Uri($"assets/{reel[reel3Position]}.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri($"assets/{reel1[reel1Position]}.png", UriKind.Relative));
+            image2.Source = new BitmapImage(new Uri($"assets/{reel2[reel2Position]}.png", UriKind.Relative));
+            image3.Source = new BitmapImage(new Uri($"assets/{reel3[reel3Position]}.png", UriKind.Relative));
 
             if (reel1BottomIndex < 0) reel1BottomIndex = symbolCount - 1;
             if (reel1TopIndex >= symbolCount) reel1TopIndex = 0;
@@ -77,14 +86,13 @@ namespace wpf_felkaru_rablo
             if (reel3TopIndex >= symbolCount) reel3TopIndex = 0;
 
 
-            image1Top.Source = new BitmapImage(new Uri($"assets/{reel[reel1TopIndex]}.png", UriKind.Relative));
-            image1Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel1BottomIndex]}.png", UriKind.Relative));
+            image1Top.Source = new BitmapImage(new Uri($"assets/{reel1[reel1TopIndex]}.png", UriKind.Relative));
+            image1Bottom.Source = new BitmapImage(new Uri($"assets/{reel1[reel1BottomIndex]}.png", UriKind.Relative));
 
-            image2Top.Source = new BitmapImage(new Uri($"assets/{reel[reel2TopIndex]}.png", UriKind.Relative));
-            image2Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel2BottomIndex]}.png", UriKind.Relative));
-
-            image3Top.Source = new BitmapImage(new Uri($"assets/{reel[reel3TopIndex]}.png", UriKind.Relative));
-            image3Bottom.Source = new BitmapImage(new Uri($"assets/{reel[reel3BottomIndex]}.png", UriKind.Relative));
+            image2Top.Source = new BitmapImage(new Uri($"assets/{reel2[reel2TopIndex]}.png", UriKind.Relative));
+            image2Bottom.Source = new BitmapImage(new Uri($"assets/{reel2[reel2BottomIndex]}.png", UriKind.Relative));
+            image3Top.Source = new BitmapImage(new Uri($"assets/{reel3[reel3TopIndex]}.png", UriKind.Relative));
+            image3Bottom.Source = new BitmapImage(new Uri($"assets/{reel3[reel3BottomIndex]}.png", UriKind.Relative));
 
 
             if (spinTicks >= 20)
