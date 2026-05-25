@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
+using System.Security.Cryptography;
 
 namespace wpf_felkaru_rablo
 {
@@ -19,6 +20,8 @@ namespace wpf_felkaru_rablo
     {
         private int balance = 100;
         private int bet = 10;
+        private string[] symbols = { "cherry", "lemon", "orange", "bell", "grape", "seven", "star", "watermelon" };
+        private Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +36,8 @@ namespace wpf_felkaru_rablo
             }
             balance -= bet;
             balanceTextBox.Text = $"{balance}";
-            image1.Source = new BitmapImage(new Uri($"assets/cherry.png", UriKind.Relative));
+            int index = random.Next(symbols.Length);
+            image1.Source = new BitmapImage(new Uri($"assets/{symbols[index]}.png", UriKind.Relative));
         }
     }
 }
