@@ -15,7 +15,7 @@
             <TextBlock TextWrapping="Wrap" FontSize="24" Margin="0,150,0,0" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Szimbólumok:"/>
             <TextBox x:Name="symbolcountTextBox" TextWrapping="Wrap" Text="4" Width="100" Margin="160,150,0,0" Height="35" TextAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="symbolcountTextBox_TextChanged"/>
             <Button x:Name="spinButton" Content="Pörgetés" Height="45" Width="130" Margin="0,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="spinButton_Click"/>
-            <TextBlock x:Name="alertTextBox" TextWrapping="Wrap" FontSize="24" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Nincs elég pénz a téthez!"/>
+            <TextBlock x:Name="alertTextBox" TextWrapping="Wrap" FontSize="24" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text=""/>
         </Grid>
         <StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
